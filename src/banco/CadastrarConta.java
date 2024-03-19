@@ -1,4 +1,4 @@
-package src.banco;
+package banco;
 
 import java.util.Arrays;
 
