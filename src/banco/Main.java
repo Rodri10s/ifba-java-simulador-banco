@@ -28,7 +28,7 @@ public class Main {
 
         // cadastro.procurarConta(2); //Procurar conta através da posição do vetor
 
-         cadastro.buscarNome("Ramon4"); //Procurar conta através do atributo "Nome"
+        // cadastro.buscarNome("Ramon4"); //Procurar conta através do atributo "Nome"
 
         // Conta conta5 = new Conta();
         // conta5.setNome("Teste De Posiçao");
