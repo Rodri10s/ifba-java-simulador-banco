@@ -7,6 +7,7 @@ public class CadastrarConta {
     private Conta[] contas;
     private int tamanho;
 
+    
     public CadastrarConta(int capacidade) {
         this.contas = new Conta[capacidade];
         this.tamanho = 0;
@@ -32,7 +33,7 @@ public class CadastrarConta {
 
     public void verificar(int posicao) throws Exception {
         if (!(posicao >= 0 && posicao < this.tamanho)) {
-            throw new Exception("posição insdisponível!");
+            throw new Exception("posição insdisponível!\n");
         }
     }
 

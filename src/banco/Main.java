@@ -1,42 +1,98 @@
 package banco;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        Conta conta1 = new Conta();
-        conta1.setNome("Ramon");
-        conta1.setValor(35.00);
+        Scanner input = new Scanner(System.in);
+        CadastrarConta cadastro = new CadastrarConta(10);
 
-        Conta conta2 = new Conta();
-        conta2.setNome("Ramon2");
-        conta2.setValor(350.00);
+        boolean repeticao = true;
+        do {
+            opcoes();
+            int escolha = input.nextInt();
 
-        Conta conta3 = new Conta();
-        conta3.setNome("Ramon3");
-        conta3.setValor(3500.00);
+            switch (escolha) {
+                case 1:
+                    System.out.println("Quantas Contas Deseja Gerar?");
+                    int quantidade = input.nextInt();
+                    gerarContas(quantidade, cadastro);
+                    break;
+            
+                case 2:
+                    System.out.println("Quantas Contas Deseja Inserir?");
+                    quantidade = input.nextInt();
+                    adicionarManualmente(quantidade, cadastro);
+                    break;
 
-        Conta conta4 = new Conta();
-        conta4.setNome("Ramon4");
-        conta4.setValor(35000.00);
+                case 3:
+                    procurarPosicao(input, cadastro);
+                    break;
 
-        CadastrarConta cadastro = new CadastrarConta(3);
+                case 4:
+                    procurarNome(input, cadastro);
+                    break;
 
-        cadastro.adicionarConta(conta1);
-        cadastro.adicionarConta(conta2);
-        cadastro.adicionarConta(conta3);
-        cadastro.adicionarConta(conta4);
+                case 5:
+                    cadastro.listarConta();
+                    break;
 
-        // cadastro.procurarConta(2); //Procurar conta através da posição do vetor
+                case 6:
+                    repeticao = false;
+                    System.out.println("Programa Finalizado!");
+                    break;
 
-        // cadastro.buscarNome("Ramon4"); //Procurar conta através do atributo "Nome"
+                default:
+                    System.out.println("Opção não existente!");
+                    break;
+            }
+        } while (repeticao);
+    }
 
-        // Conta conta5 = new Conta();
-        // conta5.setNome("Teste De Posiçao");
-        // conta5.setValor(111111);
+    public static void gerarContas(int quantidade, CadastrarConta cadastro){
+        Conta conta;
+        for(int i=0; i<quantidade; i++){
+            conta = new Conta();
+            conta.setNome("Nome"+i);
+            conta.setValor(i);
+            cadastro.adicionarConta(conta);
+        }
+    }
 
-        // cadastro.adicionarPosicaoEspecifica(2, conta5); //Adicionar conta em posição
-        // específica
+    public static void adicionarManualmente(int quantidade, CadastrarConta cadastro){
+        Scanner input = new Scanner(System.in);
+        Conta conta;
+        for(int i=0; i<quantidade; i++){
+            conta = new Conta();
+            System.out.println("Digite o Nome do proprietário da conta:");
+            conta.setNome(input.nextLine());
+            System.out.println("Digite o Valor da conta:");
+            conta.setValor(input.nextDouble());
+            cadastro.adicionarConta(conta);
+        }
+    }
 
-        // cadastro.listarConta();//Método de imprimir todas as contas na lista
+    public static void opcoes(){
+        System.out.println("ESCOLHA UMA OPÇÃO:");
+        System.out.println("1 - Adicionar Conta Dinamicamente");
+        System.out.println("2 - Adicionar Conta Manualmente");
+        System.out.println("3 - Procurar Conta Por Posição");
+        System.out.println("4 - Procurar Conta Pelo Nome");
+        System.out.println("5 - Listar Contas");
+        System.out.println("6 - Fechar Programa\n");
+    }
+
+    public static void procurarPosicao(Scanner input, CadastrarConta cadastro) throws Exception{
+        System.out.println("Qual a posição deseja Procurar?\n");
+        int posicao = input.nextInt();
+        cadastro.procurarConta(posicao);
+        }
+
+    public static void procurarNome(Scanner input, CadastrarConta cadastro){
+        System.out.println("Qual Nome deseja Procurar?\n");
+        String nome = input.nextLine();
+        nome = input.nextLine();
+        cadastro.buscarNome(nome);
     }
 }
