@@ -1,7 +1,4 @@
-package banco;
-
-import java.util.Arrays;
-
+package src.banco;
 public class CadastrarConta {
 
     private Conta[] contas;
@@ -70,5 +67,15 @@ public class CadastrarConta {
         }
         this.contas[posicao] = conta;
         this.tamanho++;
+    }
+
+    public void removerPosicaoEspecifica(int posicao) throws Exception {
+        this.verificar(posicao);
+        for (int i = posicao; i <= this.tamanho; i++) {
+            this.contas[i] = this.contas[i + 1];
+        }
+        this.tamanho--;
+        this.contas[tamanho] = null;
+        
     }
 }

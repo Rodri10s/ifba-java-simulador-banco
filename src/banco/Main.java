@@ -1,7 +1,6 @@
-package banco;
+package src.banco;
 
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) throws Exception {
 
@@ -23,7 +22,7 @@ public class Main {
                 case 2:
                     System.out.println("Quantas Contas Deseja Inserir?");
                     quantidade = input.nextInt();
-                    adicionarManualmente(quantidade, cadastro);
+                    adicionarManualmente(quantidade, cadastro, input);
                     break;
 
                 case 3:
@@ -39,6 +38,10 @@ public class Main {
                     break;
 
                 case 6:
+                    removerPosicaoEspecifica(input, cadastro);
+                    break;
+
+                case 7:
                     repeticao = false;
                     System.out.println("Programa Finalizado!");
                     break;
@@ -60,12 +63,12 @@ public class Main {
         }
     }
 
-    public static void adicionarManualmente(int quantidade, CadastrarConta cadastro){
-        Scanner input = new Scanner(System.in);
+    public static void adicionarManualmente(int quantidade, CadastrarConta cadastro, Scanner input){
         Conta conta;
         for(int i=0; i<quantidade; i++){
             conta = new Conta();
             System.out.println("Digite o Nome do proprietário da conta:");
+            conta.setNome(input.nextLine());
             conta.setNome(input.nextLine());
             System.out.println("Digite o Valor da conta:");
             conta.setValor(input.nextDouble());
@@ -80,7 +83,8 @@ public class Main {
         System.out.println("3 - Procurar Conta Por Posição");
         System.out.println("4 - Procurar Conta Pelo Nome");
         System.out.println("5 - Listar Contas");
-        System.out.println("6 - Fechar Programa\n");
+        System.out.println("6 - Remover Posição");
+        System.out.println("7 - Fechar Programa\n");
     }
 
     public static void procurarPosicao(Scanner input, CadastrarConta cadastro) throws Exception{
@@ -94,5 +98,11 @@ public class Main {
         String nome = input.nextLine();
         nome = input.nextLine();
         cadastro.buscarNome(nome);
+    }
+
+    public static void removerPosicaoEspecifica(Scanner input, CadastrarConta cadastro) throws Exception{
+        System.out.println("Qual Posição deseja apagar?");
+        int posicao = input.nextInt();
+        cadastro.removerPosicaoEspecifica(posicao);
     }
 }

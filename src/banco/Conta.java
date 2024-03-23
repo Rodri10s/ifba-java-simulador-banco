@@ -1,4 +1,4 @@
-package banco;
+package src.banco;
 
 public class Conta {
     private String nome;
