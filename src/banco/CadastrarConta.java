@@ -1,17 +1,17 @@
-package src.banco;
+package banco;
+
 public class CadastrarConta {
 
     private Conta[] contas;
     private int tamanho;
 
-    
     public CadastrarConta(int capacidade) {
         this.contas = new Conta[capacidade];
         this.tamanho = 0;
     }
 
     public void adicionarCapacidade() {
-        if (this.tamanho == this.contas.length) {
+        if (this.tamanho == this.contas.length - 1) {
             Conta[] novaConta = new Conta[this.contas.length * 2];
             for (int i = 0; i < this.contas.length; i++) {
                 novaConta[i] = this.contas[i];
@@ -22,10 +22,10 @@ public class CadastrarConta {
 
     public void adicionarConta(Conta conta) {
         this.adicionarCapacidade();
-        if (this.tamanho < this.contas.length) {
-            this.contas[tamanho] = conta;
-            tamanho++;
-        }
+
+        this.contas[tamanho] = conta;
+        tamanho++;
+
     }
 
     public void verificar(int posicao) throws Exception {
@@ -76,6 +76,6 @@ public class CadastrarConta {
         }
         this.tamanho--;
         this.contas[tamanho] = null;
-        
+
     }
 }
