@@ -56,6 +56,7 @@ public class CadastrarConta<T> {
 
     public void adicionarPosicaoEspecifica(int posicao, T conta) throws Exception {
         this.verificar(posicao);
+        this.adicionarCapacidade();
         for (int i = this.tamanho; i >= posicao; i--) {
             this.contas[i] = this.contas[i - 1];
         }
