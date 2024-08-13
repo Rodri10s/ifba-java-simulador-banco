@@ -1,4 +1,4 @@
-package banco;
+package src.banco;
 
 public class Conta {
     private String nome;
@@ -18,6 +18,11 @@ public class Conta {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta [nome=" + nome + ", valor=" + valor + "]";
     }
 
 }

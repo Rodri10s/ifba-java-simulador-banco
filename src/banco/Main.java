@@ -1,6 +1,8 @@
-package banco;
+package src.banco;
 
+import java.util.Arrays;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws Exception {
 
@@ -18,7 +20,7 @@ public class Main {
                     int quantidade = input.nextInt();
                     gerarContas(quantidade, cadastro);
                     break;
-            
+
                 case 2:
                     System.out.println("Quantas Contas Deseja Inserir?");
                     quantidade = input.nextInt();
@@ -34,7 +36,7 @@ public class Main {
                     break;
 
                 case 5:
-                    cadastro.listarConta();
+                    System.out.println(Arrays.toString(cadastro.listarConta()));
                     break;
 
                 case 6:
@@ -53,19 +55,19 @@ public class Main {
         } while (repeticao);
     }
 
-    public static void gerarContas(int quantidade, CadastrarConta cadastro){
+    public static void gerarContas(int quantidade, CadastrarConta cadastro) {
         Conta conta;
-        for(int i=0; i<quantidade; i++){
+        for (int i = 0; i < quantidade; i++) {
             conta = new Conta();
-            conta.setNome("Nome"+i);
+            conta.setNome("Nome" + i);
             conta.setValor(i);
             cadastro.adicionarConta(conta);
         }
     }
 
-    public static void adicionarManualmente(int quantidade, CadastrarConta cadastro, Scanner input){
+    public static void adicionarManualmente(int quantidade, CadastrarConta cadastro, Scanner input) {
         Conta conta;
-        for(int i=0; i<quantidade; i++){
+        for (int i = 0; i < quantidade; i++) {
             conta = new Conta();
             System.out.println("Digite o Nome do proprietário da conta:");
             conta.setNome(input.nextLine());
@@ -76,7 +78,7 @@ public class Main {
         }
     }
 
-    public static void opcoes(){
+    public static void opcoes() {
         System.out.println("ESCOLHA UMA OPÇÃO:");
         System.out.println("1 - Adicionar Conta Dinamicamente");
         System.out.println("2 - Adicionar Conta Manualmente");
@@ -87,20 +89,20 @@ public class Main {
         System.out.println("7 - Fechar Programa\n");
     }
 
-    public static void procurarPosicao(Scanner input, CadastrarConta cadastro) throws Exception{
+    public static void procurarPosicao(Scanner input, CadastrarConta cadastro) throws Exception {
         System.out.println("Qual a posição deseja Procurar?\n");
         int posicao = input.nextInt();
-        cadastro.procurarConta(posicao);
-        }
+        System.out.println(cadastro.procurarConta(posicao));
+    }
 
-    public static void procurarNome(Scanner input, CadastrarConta cadastro){
+    public static void procurarNome(Scanner input, CadastrarConta cadastro) {
         System.out.println("Qual Nome deseja Procurar?\n");
         String nome = input.nextLine();
         nome = input.nextLine();
         cadastro.buscarNome(nome);
     }
 
-    public static void removerPosicaoEspecifica(Scanner input, CadastrarConta cadastro) throws Exception{
+    public static void removerPosicaoEspecifica(Scanner input, CadastrarConta cadastro) throws Exception {
         System.out.println("Qual Posição deseja apagar?");
         int posicao = input.nextInt();
         cadastro.removerPosicaoEspecifica(posicao);

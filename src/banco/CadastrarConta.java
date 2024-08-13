@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 package src.banco;
-=======
-package banco;
-
-public class CadastrarConta {
->>>>>>> 3f0a94250a78441aef1a703bfbcd9182ee20b641
 
 import java.util.Arrays;
 
@@ -19,13 +13,8 @@ public class CadastrarConta<T> {
     }
 
     public void adicionarCapacidade() {
-<<<<<<< HEAD
         if (this.tamanho == this.contas.length) {
             T[] novaConta = (T[]) new Object[this.contas.length * 2];
-=======
-        if (this.tamanho == this.contas.length - 1) {
-            Conta[] novaConta = new Conta[this.contas.length * 2];
->>>>>>> 3f0a94250a78441aef1a703bfbcd9182ee20b641
             for (int i = 0; i < this.contas.length; i++) {
                 novaConta[i] = this.contas[i];
             }
@@ -52,19 +41,9 @@ public class CadastrarConta<T> {
         return contas[posicao];
     }
 
-    // public void buscarNome(String nome) {
-    // boolean verificar = false;
-    // for (int i = 0; i < this.tamanho; i++) {
-    // if (this.contas[i].getNome().equals(nome)) {
-    // verificar = true;
-    // System.out.println("Conta " + i + ":\nNome: " + this.contas[i].getNome() +
-    // "\nValor: R$ "
-    // + this.contas[i].getValor() + "\n");
-    // } else if ((i + 1) == this.tamanho && verificar == false) {
-    // System.out.println("Conta não encontrada");
-    // }
-    // }
-    // }
+    public void buscarNome(String nome) {
+
+    }
 
     public int busca(T conta) {
         for (int i = 0; i < this.tamanho; i++) {
@@ -91,8 +70,10 @@ public class CadastrarConta<T> {
         }
         this.tamanho--;
         this.contas[tamanho] = null;
+    }
 
-<<<<<<< HEAD
+    public T[] listarConta() {
+        return this.contas;
     }
 
     public String toString() {
@@ -107,7 +88,5 @@ public class CadastrarConta<T> {
         s.append("]");
 
         return Arrays.toString(contas);
-=======
->>>>>>> 3f0a94250a78441aef1a703bfbcd9182ee20b641
     }
 }
