@@ -1,18 +1,20 @@
 package src.banco;
-public class CadastrarConta {
 
-    private Conta[] contas;
+import java.util.Arrays;
+
+public class CadastrarConta<T> {
+
+    private T[] contas;
     private int tamanho;
 
-    
     public CadastrarConta(int capacidade) {
-        this.contas = new Conta[capacidade];
+        this.contas = (T[]) new Object[capacidade];
         this.tamanho = 0;
     }
 
     public void adicionarCapacidade() {
         if (this.tamanho == this.contas.length) {
-            Conta[] novaConta = new Conta[this.contas.length * 2];
+            T[] novaConta = (T[]) new Object[this.contas.length * 2];
             for (int i = 0; i < this.contas.length; i++) {
                 novaConta[i] = this.contas[i];
             }
@@ -20,7 +22,7 @@ public class CadastrarConta {
         }
     }
 
-    public void adicionarConta(Conta conta) {
+    public void adicionarConta(T conta) {
         this.adicionarCapacidade();
         if (this.tamanho < this.contas.length) {
             this.contas[tamanho] = conta;
@@ -34,33 +36,35 @@ public class CadastrarConta {
         }
     }
 
-    public void procurarConta(int posicao) throws Exception {
+    public T procurarConta(int posicao) throws Exception {
         this.verificar(posicao);
-        System.out.println("Conta " + (posicao) + ":\nNome: " + this.contas[posicao].getNome() + "\nValor: R$ "
-                + this.contas[posicao].getValor() + "\n");
+        return contas[posicao];
     }
 
-    public void listarConta() {
-        for (int i = 0; i < this.tamanho; i++) {
-            System.out.println("Conta " + i + ":\nNome: " + this.contas[i].getNome() + "\nValor: R$ "
-                    + this.contas[i].getValor() + "\n");
-        }
-    }
+    // public void buscarNome(String nome) {
+    // boolean verificar = false;
+    // for (int i = 0; i < this.tamanho; i++) {
+    // if (this.contas[i].getNome().equals(nome)) {
+    // verificar = true;
+    // System.out.println("Conta " + i + ":\nNome: " + this.contas[i].getNome() +
+    // "\nValor: R$ "
+    // + this.contas[i].getValor() + "\n");
+    // } else if ((i + 1) == this.tamanho && verificar == false) {
+    // System.out.println("Conta não encontrada");
+    // }
+    // }
+    // }
 
-    public void buscarNome(String nome) {
-        boolean verificar = false;
+    public int busca(T conta) {
         for (int i = 0; i < this.tamanho; i++) {
-            if (this.contas[i].getNome().equals(nome)) {
-                verificar = true;
-                System.out.println("Conta " + i + ":\nNome: " + this.contas[i].getNome() + "\nValor: R$ "
-                        + this.contas[i].getValor() + "\n");
-            } else if ((i + 1) == this.tamanho && verificar == false) {
-                System.out.println("Conta não encontrada");
+            if (this.contas[i].equals(conta)) {
+                return i;
             }
         }
+        return -1;
     }
 
-    public void adicionarPosicaoEspecifica(int posicao, Conta conta) throws Exception {
+    public void adicionarPosicaoEspecifica(int posicao, T conta) throws Exception {
         this.verificar(posicao);
         for (int i = this.tamanho; i >= posicao; i--) {
             this.contas[i] = this.contas[i - 1];
@@ -76,6 +80,20 @@ public class CadastrarConta {
         }
         this.tamanho--;
         this.contas[tamanho] = null;
-        
+
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("[");
+
+        for (int i = 0; i <= this.tamanho - 1; i++) {
+            s.append(contas[i]);
+            s.append(", ");
+        }
+
+        s.append("]");
+
+        return Arrays.toString(contas);
     }
 }
