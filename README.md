@@ -36,12 +36,22 @@ O objetivo deste repositório é armazenar a implementação de um **simulador b
 
 ## Exercícios
 
-Nesta aba, estão armazenados códigos e soluções de exercícios desenvolvidos durante o curso técnico. Os exemplos abordam conceitos como:
-- Lógica de programação aplicada ao contexto bancário
-- Estruturas de dados utilizadas para manipulação de clientes e contas
-- Exercícios práticos sobre operações bancárias e fluxos de dados
-- Situações reais simuladas para fixação de conteúdo
+1. Faça um programa “Banco” que tenha as seguintes classes:
+i. Conta, CadastrarConta, Principal;
+ii. A classe conta terá os atributos:
+i. Nome
+ii. Valor
+iii. A classe CadastrarConta terá os métodos:
 
+i. adicionarConta;
+ii. listarConta;
+iii. ProcurarConta;
+
+2. No programa Banco implemente um método para buscar uma conta
+específica pelo nome.
+Desafio
+3. No programa Banco implemente um método que adicione em uma posição
+específica, para isso verifique as posições válidas.
 ## Licença
 
 Uso estritamente educacional. Caso utilize ou compartilhe algum código, por favor cite o autor e a instituição.
